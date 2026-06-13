@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Services | AI Psychologist</title>
+{% endblock %}
+
+{% block content %}
+<main class="public-page">
+    <section class="page-hero compact">
+        <div class="container">
+            <p class="public-eyebrow">Services</p>
+            <h1>AI-enabled anxiety screening services</h1>
+            <p>AI Psychologist functions as a virtual medical assistant for anxiety-focused screening support. It helps process patient symptoms, guide users through assessment steps, and generate a structured encounter-style report.</p>
+        </div>
+    </section>
+
+    <section class="public-section">
+        <div class="container">
+            <div class="feature-grid three">
+                <article class="feature-card service-card">
+                    <span class="material-symbols-outlined">chat</span>
+                    <h3>AI Psychologist Chat</h3>
+                    <p>A guided symptom conversation that asks focused questions and prepares users for the correct self-report assessment.</p>
+                </article>
+                <article class="feature-card service-card">
+                    <span class="material-symbols-outlined">assignment_turned_in</span>
+                    <h3>Self-report assessment</h3>
+                    <p>Structured questionnaires collect severity responses and keep the screening flow simple and patient friendly.</p>
+                </article>
+                <article class="feature-card service-card">
+                    <span class="material-symbols-outlined">description</span>
+                    <h3>Report generation</h3>
+                    <p>Assessment results are organized into a professional patient report that supports download and sharing.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="public-section soft-section">
+        <div class="container">
+            <div class="service-flow">
+                <div class="section-heading">
+                    <p class="public-eyebrow">Workflow</p>
+                    <h2>From first answer to final report</h2>
+                    <p>The service keeps each step clear so users understand what happens next.</p>
+                </div>
+                <div class="flow-list">
+                    <div><strong>01</strong><span>Start the AI Psychologist product</span></div>
+                    <div><strong>02</strong><span>Answer chatbot screening questions</span></div>
+                    <div><strong>03</strong><span>Complete the recommended questionnaire</span></div>
+                    <div><strong>04</strong><span>Generate the patient assessment report</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="public-section">
+        <div class="container">
+            <div class="product-panel">
+                <div>
+                    <p class="public-eyebrow">Product access</p>
+                    <h2>AI Psychologist</h2>
+                    <p>Start the product from your account dashboard and continue through the complete screening experience.</p>
+                    <a href="{{ url_for('main.dashboard') }}" class="public-action primary">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        Go to Dashboard
+                    </a>
+                </div>
+                <img src="{{ url_for('static', filename='img/aip.png') }}" alt="AI Psychologist product preview" class="product-image">
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

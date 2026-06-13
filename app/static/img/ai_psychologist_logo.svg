@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="112" viewBox="0 0 420 112" role="img" aria-labelledby="title desc">
+  <title id="title">AI Psychologist Logo</title>
+  <desc id="desc">A clean clinical logo with a brain, medical cross, and AI Psychologist wordmark.</desc>
+  <rect width="420" height="112" rx="24" fill="#FFFFFF"/>
+  <g transform="translate(20 16)">
+    <rect width="80" height="80" rx="22" fill="#EAF7F4"/>
+    <path d="M40 15C29 15 20 24 20 35c0 7 4 13 10 17v9c0 4 3 7 7 7h7c4 0 7-3 7-7v-6h4c4 0 7-3 7-7v-9c0-13-10-24-22-24Z" fill="#0F766E"/>
+    <path d="M33 27c-4 1-7 5-7 10 0 4 2 8 6 10m15-21c5 2 9 7 9 13 0 5-2 9-6 12m-15-4c3 2 8 2 11 0" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+    <path d="M61 22v16M53 30h16" stroke="#2563EB" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(120 29)">
+    <text x="0" y="28" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="800" fill="#102A43">AI Psychologist</text>
+    <text x="1" y="54" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600" fill="#486581">Clinical Mental Health Assessment</text>
+  </g>
+</svg>

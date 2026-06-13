@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title> Sign in | AI Psychologist | Your Virtual Psychologist</title>
+{% endblock %}
+
+{% block content %}
+
+{% if response == 'failed' %}
+<div class="alert alert-danger text-center" role="alert">
+    Username or password or both is wrong!
+  </div>
+{% endif %}
+
+<div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 py-5">
+                    <!-- form card login -->
+                    <div class="card rounded" style="border-radius:15px" >
+                        <div>
+                            <h3 class="mb-0 text-center py-2" style="color: #0360D9;">Login</h3>
+                        </div>
+                        <div class="card-body">
+                            <form action="{{ url_for('auth.login') }}" method="POST" class="py-2">
+                              <div class="row mb-3">
+                                <div class="col-sm-6">
+                                  <input type="email" class="form-control" id="email" placeholder="Enter your Email" aria-describedby="emailHelp" name="email" style="border-radius:20px;" required>
+                                </div>
+                                <div class="col-sm-6">
+                                  <input type="password" class="form-control" id="password" placeholder="Enter your Password" name="password" style="border-radius:20px;" required>
+                                </div>
+                              </div>
+                              <div class="row mb-3">
+                                <div class="col-sm-6">
+                                  <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                                    <label class="form-check-label" for="remember">Remember me</label>
+                                  </div>
+                                </div>
+                              </div>
+                              <input type="hidden" name="next" value="{{ request.args.get('next', '') }}" />
+                              <div class="row">
+                                <div class="col-12">
+                                    <div class="d-grid gap-2 col-6 mx-auto">
+                                        <button type="submit" class="btn btn-primary btn-block" style="border-radius:20px;">Log in</button>
+                                    </div>
+                                </div>
+                              </div>
+                              <!-- Add a gap -->
+                              <div class="row">
+                                  <div class="col-12 mt-3">
+                                      <!-- The 'mt-3' class adds margin-top for the gap -->
+                                      <div class="d-grid gap-2 col-6 mx-auto">
+                                          <!-- Change button color to black -->
+                                          <a class="btn btn-dark btn-block" type="button" style="border-radius:20px;" href="/signup">Sign up</a>
+                                      </div>
+                                  </div>
+                              </div>
+                            </form>
+                        </div>
+                        <!--/card-block-->
+                    </div>
+                    <!-- /form card login -->
+
+                </div>
+
+                <!--/col-->
+      
+            </div>
+            <!--/row-->
+</div>
+<!--/container-->
+
+{% endblock %}

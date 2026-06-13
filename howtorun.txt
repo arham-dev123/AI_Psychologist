@@ -1,0 +1,16 @@
+# py -m pip install --user virtualenv
+# #creating virtual env
+# py -m venv env
+# #activating virtual env
+# .venv\scripts\activate
+
+# pip install --upgrade pip setuptools
+# pip install -r requirements.txt
+# set MONGO_URI=your_mongodb_connection_string
+# set SECRET_KEY=your_flask_secret_key
+# set MAIL_SERVER=your_smtp_server
+# set MAIL_PORT=587
+# set MAIL_USE_TLS=true
+# set MAIL_USERNAME=your_smtp_username
+# set MAIL_PASSWORD=your_smtp_password
+# flask run

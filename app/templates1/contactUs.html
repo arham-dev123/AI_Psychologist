@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>AI Psychologist | Your Virtual Psychologist</title>
+{% endblock %}
+
+{% block content %}
+
+<!-- About Us -->
+
+<div class="container my-5">
+
+    <!-- Message Form -->
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <form action="mailto:admin@aidoctor.tech" method="GET">
+            <div class="mb-1">
+                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" style="border-radius:20px;">
+            </div>
+            <div class="mb-1">
+                <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="border-radius:20px;"></textarea>
+                <button type="submit" class="btn btn-primary my-3" style="border-radius:20px;">Send</button>
+            </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+    {% endblock %}

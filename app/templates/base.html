@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='img/ai_psychologist_logo.svg') }}" />
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+
+  
+
+  {% block head %}
+
+  {% endblock %}
+</head>
+
+<body class="public-body">
+
+  <!-- Spinner -->
+
+  <div id="loading">
+    <div class="spinner-border text-info" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+
+
+  <!-- Navigation Bar-->
+
+  <nav class="navbar navbar-expand-lg sticky-top public-navbar">
+    <div class="container">
+      <a class="navbar-brand public-brand" href="{{ url_for('main.home') }}" aria-label="AI Psychologist">
+        <img src="{{ url_for('static', filename='img/ai_psychologist_logo.svg') }}" alt="AI Psychologist logo">
+      </a>
+      <div class="collapse navbar-collapse topnav" id="navbarSupportedContent">
+        <div class="mx-auto text-center">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-center public-navlinks">
+            <li class="nav-item">
+              <a class="nav-link active {% if request.path == url_for('main.home') %}selected{% endif %}" aria-current="page" href="{{ url_for('main.home') }}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active {% if request.path == url_for('main.services') %}selected{% endif %}" href="{{ url_for('main.services') }}">Services</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Products
+              </a>
+              <ul class="dropdown-menu public-products-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item product-dropdown-card" href="{{ url_for('main.home') }}#products">
+                    <span class="material-symbols-outlined">dashboard_customize</span>
+                    <span>
+                      <strong>Product overview</strong>
+                      <small>See the screening workflow and product features</small>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item product-dropdown-card {% if request.path == url_for('chat.chat') %}selected{% endif %}" href="{{ url_for('chat.chat') }}">
+                    <span class="material-symbols-outlined">psychology</span>
+                    <span>
+                      <strong>AI Psychologist</strong>
+                      <small>Guided anxiety screening and report generation</small>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active {% if request.path == url_for('main.contact_us') %}selected{% endif %}" href="{{ url_for('main.contact_us') }}">Contact us</a>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-light" type="submit">Search</button>
+              </form> -->
+        {% if "email" not in session %}
+        <button type="button" class="btn public-btn public-btn-outline mx-2" data-bs-toggle="modal"
+          data-bs-target="#loginModal">Log in</button>
+        <button type="button" class="btn public-btn public-btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#signupModal">Sign
+          up</button>
+        {% else %}
+        <a href="{{ url_for('main.dashboard') }}" class="btn public-btn public-btn-primary" role="button">Dashboard</a>
+        {% endif %}
+      </div>
+
+      <!-- Navigation Bar Mobile-->
+      <div id="navbarMobile" class="sidebar collapse navbar-collapse">
+        <ul>
+          <li class="nav-item">
+            <div class="d-flex justify-content-between mb-4">
+              <div>
+                <a class="navbar-brand public-brand mobile-brand p-0 me-2" href="{{ url_for('main.home') }}" aria-label="AI Psychologist">
+                  <img src="{{ url_for('static', filename='img/ai_psychologist_logo.svg') }}" alt="AI Psychologist logo">
+                </a>
+              </div>
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url_for('main.home') }}" class="nav-link linkColor{% if request.path == url_for('main.home') %}selected2{% endif %}" aria-current="page" href="{{ url_for('main.home') }}">Home</a> 
+          </li>
+          <li class="nav-item">
+            <a href="{{ url_for('main.services') }}" class="nav-link linkColor{% if request.path == url_for('main.services') %}selected2{% endif %}" aria-current="page" href="{{ url_for('main.services') }}">Services</a>
+          </li>
+          <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMobile" role="button" data-bs-toggle="dropdown"
+                                  aria-expanded="false">
+                        Products
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMobile">
+                        <li><a class="dropdown-item linkColor" href="{{ url_for('main.home') }}#products">Product overview</a></li>
+                        <li><a class="dropdown-item linkColor{% if request.path == url_for('chat.chat') %}selected2{% endif %}" href="{{ url_for('chat.chat') }}">AI Psychologist</a></li>
+                      </ul>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url_for('main.contact_us') }}" class="nav-link linkColor{% if request.path == url_for('main.contact_us') %}selected2{% endif %}" aria-current="page" href="{{ url_for('main.contact_us') }}">Contact Us</a>
+          </li>
+          <div class="mt-4">
+            {% if "email" not in session %}
+            <li>
+              <button type="button" class="btn public-btn public-btn-outline mx-2 mb-3" data-bs-toggle="modal"
+                data-bs-target="#loginModal">Log in</button>
+            </li>
+            <li>
+              <button type="button" class="btn public-btn public-btn-primary mx-1 mb-3" data-bs-toggle="modal" data-bs-target="#signupModal">Sign
+              up</button>
+            </li>
+            {% else %}
+            <li>
+              <a href="{{ url_for('main.dashboard') }}" class="btn public-btn public-btn-primary mb-3" role="button">Dashboard</a>
+            </li>
+            {% endif %}
+          </div>
+        </ul>
+      </div>
+
+      <div id="main" class="position-fixed">
+        <a class="d-md-none mobile-menu-btn" role="button" onclick="openNav()">
+          <span class="material-symbols-outlined">
+            menu
+          </span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Modal Login -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="loginModalLabel">Login</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <!-- Modal body -->
+          <form action="{{ url_for('auth.login') }}" method="POST" style="border-radius:18px" >
+            <div class="row mb-3">
+              <div class="col-sm-6">
+                <input type="email" class="form-control" id="email" placeholder="Enter your Email" aria-describedby="emailHelp" name="email" style="border-radius:20px;" required>
+              </div>
+              <div class="col-sm-6">
+                <input type="password" class="form-control" placeholder="Enter your Password" id="password" name="password" style="border-radius:20px;" required>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-sm-6">
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                  <label class="form-check-label" for="remember">Remember me</label>
+                </div>
+              </div>
+              <div class="col-sm-6 text-sm-end">
+                <a class="forgot-password-link" href="{{ url_for('auth.forgot_password') }}">Forgot Password?</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                  <div class="d-grid gap-2 col-6 mx-auto">
+                      <button type="submit" class="btn btn-primary btn-block" style="border-radius:20px;">Log in</button>
+                  </div>
+              </div>
+            </div>
+            <!-- Add a gap -->
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <!-- The 'mt-3' class adds margin-top for the gap -->
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <!-- Change button color to black -->
+                        <button class="btn btn-dark btn-block" type="button" style="border-radius:20px;" onclick="toggleModals2()">Sign up</button>
+                    </div>
+                </div>
+            </div>
+          </form>
+
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius:20px;">Close</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Signup -->
+  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="signupModalLabel">Sign up</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="border-radius:20px;"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Signup Modal Body -->
+
+          <form action="{{url_for('auth.signup')}}" method="POST" oninput='password2.setCustomValidity(password.value != password2.value ? "Passwords do not match." : "")'>
+            <div class="row mb-3">
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="inputName" placeholder="Enter your Name" name="name" style="border-radius:20px;" required>
+              </div>
+              <div class="col-sm-6">
+                <input type="email" class="form-control" id="inputEmail" placeholder="Enter your Email" name="email" style="border-radius:20px"; required>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-sm-6">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Enter your Password" name="password" style="border-radius:20px" required>
+              </div>
+              <div class="col-sm-6">
+                <input type="password" class="form-control" id="inputPassword2" placeholder="Re-enter your Password" name="password2" style="border-radius:20px" required>
+              </div>
+            </div>
+            <!-- <fieldset class="row mb-3">
+              <legend class="col-form-label col-sm-2 pt-0">I am a</legend>
+              <div class="col-sm-10">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="userType" id="userType1" value="patient" checked>
+                  <label class="form-check-label" for="userType1">
+                    Patient
+                  </label>
+                </div>
+                <div class="form-check disabled">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3"
+                    disabled>
+                  <label class="form-check-label" for="gridRadios3">
+                    Third disabled radio
+                  </label>
+                </div>
+              </div> 
+            </fieldset> -->
+            <div class="row mb-3">
+              <div class="col-sm-10 offset-sm-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheck1" required>
+                  <label class="form-check-label" for="gridCheck1">
+                    Agree to terms and conditions
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                  <div class="d-grid gap-2 col-6 mx-auto">
+                      <button type="submit" class="btn btn-primary btn-block" style="border-radius:20px;">Sign up</button>
+                  </div>
+              </div>
+            </div>
+            <!-- Add a gap -->
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <!-- The 'mt-3' class adds margin-top for the gap -->
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <!-- Change button color to black -->
+                        <button class="btn btn-dark btn-block" type="button" style="border-radius:20px;" onclick="toggleModals()">Log in</button>
+                    </div>
+                </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% block content %}
+
+  {% endblock %}
+
+
+  <!-- footer section-->
+
+  <footer class="public-footer d-print-none">
+    <div class="container">
+      <div class="public-footer-inner">
+        <span>AI Psychologist</span>
+        <span>Clinical anxiety screening support. Not a substitute for medical diagnosis.</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+    
+       
+
+
+</body>
+
+</html>

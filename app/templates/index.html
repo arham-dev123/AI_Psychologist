@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>AI Psychologist | Your Virtual Psychologist</title>
+{% endblock %}
+
+{% block content %}
+<main class="public-page">
+    <section class="public-hero home-hero">
+        <div class="container">
+            <div class="public-hero-copy">
+                <p class="public-eyebrow">AI-powered mental health screening</p>
+                <h1>AI Psychologist Anxiety Detection System</h1>
+                <p class="public-lead">Where technology meets well-being. AI Psychologist helps users complete a guided symptom conversation, continue into a self-report assessment, and generate a structured patient report.</p>
+                <div class="public-actions">
+                    <a href="{{ url_for('main.services') }}" class="public-action primary">
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                        Get Started
+                    </a>
+                    <a href="{{ url_for('main.contact_us') }}" class="public-action secondary">
+                        <span class="material-symbols-outlined">mail</span>
+                        Contact Us
+                    </a>
+                </div>
+                <div class="hero-trust-row">
+                    <span>Voice Assistant Support</span>
+                    <span><strong>24/7</strong> guided access</span>
+                    <span><strong>PDF</strong> report support</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="public-section">
+        <div class="container">
+            <div class="section-heading centered">
+                <p class="public-eyebrow">Platform strengths</p>
+                <h2>Designed for clear, guided anxiety screening</h2>
+                <p>Simple patient-facing steps with structured output for easier review.</p>
+            </div>
+            <div class="feature-grid three">
+                <article class="feature-card">
+                    <span class="material-symbols-outlined">forum</span>
+                    <h3>Guided intake chat</h3>
+                    <p>Collects symptom context through focused questions before assessment begins.</p>
+                </article>
+                <article class="feature-card">
+                    <span class="material-symbols-outlined">psychology</span>
+                    <h3>AI prediction support</h3>
+                    <p>Uses the integrated DistilBERT model to recommend a relevant screening flow.</p>
+                </article>
+                <article class="feature-card">
+                    <span class="material-symbols-outlined">clinical_notes</span>
+                    <h3>Patient report</h3>
+                    <p>Generates a clean assessment report that can be downloaded or shared.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="public-section product-showcase" id="products">
+        <div class="container">
+            <div class="product-panel">
+                <div>
+                    <p class="public-eyebrow">Product</p>
+                    <h2>AI Psychologist</h2>
+                    <p>One connected product experience for anxiety screening: chatbot conversation, self-report questionnaire, severity scoring, and professional report generation.</p>
+                    <a href="{{ url_for('chat.chat') }}" class="public-action primary">
+                        <span class="material-symbols-outlined">monitor</span>
+                        Open Product
+                    </a>
+                </div>
+                <div class="product-highlights">
+                    <div><span class="material-symbols-outlined">check_circle</span> Structured questionnaire and scoring flow</div>
+                    <div><span class="material-symbols-outlined">check_circle</span> Downloadable patient assessment report</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

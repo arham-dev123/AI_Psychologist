@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Contact Us | AI Psychologist</title>
+{% endblock %}
+
+{% block content %}
+<main class="public-page">
+    <section class="page-hero compact">
+        <div class="container">
+            <p class="public-eyebrow">Contact us</p>
+            <h1>Let us know how we can help</h1>
+            <p>Reach out with questions about the AI Psychologist anxiety screening workflow, report generation, or project support.</p>
+        </div>
+    </section>
+
+    <section class="public-section contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info-panel">
+                    <div class="section-heading">
+                        <p class="public-eyebrow">Support</p>
+                        <h2>Professional help for your project workflow</h2>
+                        <p>Use the form to send a message. The current contact behavior is preserved through your existing email action.</p>
+                    </div>
+                    <div class="contact-card-list">
+                        <div class="contact-info-card">
+                            <span class="material-symbols-outlined">mail</span>
+                            <div>
+                                <strong>Email support</strong>
+                                <p>admin@aidoctor.tech</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-card">
+                            <span class="material-symbols-outlined">health_and_safety</span>
+                            <div>
+                                <strong>Clinical-style platform</strong>
+                                <p>Designed for anxiety screening support and report generation.</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-card">
+                            <span class="material-symbols-outlined">schedule</span>
+                            <div>
+                                <strong>Quick communication</strong>
+                                <p>Share questions, feedback, or improvement requests.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <form action="mailto:admin@aidoctor.tech" method="GET" class="contact-form-card">
+                    <div class="form-header">
+                        <span class="material-symbols-outlined">mark_email_read</span>
+                        <div>
+                            <h2>Send a message</h2>
+                            <p>We will review your message and respond through email.</p>
+                        </div>
+                    </div>
+                    <div class="public-field">
+                        <label for="exampleFormControlInput1">Email address</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    </div>
+                    <div class="public-field">
+                        <label for="exampleFormControlTextarea1">Message</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Write your message"></textarea>
+                    </div>
+                    <button type="submit" class="public-action primary form-submit">
+                        <span class="material-symbols-outlined">send</span>
+                        Send
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

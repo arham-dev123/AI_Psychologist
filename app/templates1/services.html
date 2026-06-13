@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>AI Psychologist | Your Virtual Psychologist</title>
+<style>
+    .example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-top-width: medium;
+        border-right-width: medium;
+        border-bottom-width: medium;
+        border-left-width: medium;
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- Heroes / Card -->
+
+<div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold lh-1 mb-3" style="color:blue;">AI PSYCHOLOGIST</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">AI Psychologist functions as a virtual medical assistant. In other words, it can rapidly and
+            systematically process patient symptoms, help identify the correct diagnosis, suggest appropriate tests and
+            evidence-based treatment, and generate the encounter note. AI Psychologist is mainly a chatbot service that will
+            provide you an Artificial Intelligent Psychologist that can detect your disease by your symptoms. </p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a href=" {{ url_for('main.dashboard') }}"><button type="button" class="btn btn-primary btn-lg px-4 me-sm-3" style="border-radius:20px;">AI Psychologist</button></a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

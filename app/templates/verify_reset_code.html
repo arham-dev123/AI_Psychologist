@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Verify Code | AI Psychologist</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+{% endblock %}
+
+{% block content %}
+<main class="auth-recovery-page">
+    <section class="auth-recovery-card">
+        <div class="auth-recovery-header">
+            <span class="material-symbols-outlined">password</span>
+            <div>
+                <p class="auth-eyebrow">Password Recovery</p>
+                <h1>Verify Reset Code</h1>
+                <p>Enter the 6-digit code sent to {{ email }}. The code expires after 10 minutes.</p>
+            </div>
+        </div>
+
+        {% if error %}
+        <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endif %}
+
+        <form action="{{ url_for('auth.verify_reset_code') }}" method="POST" class="auth-recovery-form">
+            <label class="auth-field">
+                <span>Reset Code</span>
+                <input type="text" name="otp_code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="Enter 6-digit code" required>
+            </label>
+
+            <button type="submit" class="auth-primary-action">
+                <span class="material-symbols-outlined">verified</span>
+                Verify Code
+            </button>
+        </form>
+
+        <a href="{{ url_for('auth.forgot_password') }}" class="auth-secondary-link">Request a new code</a>
+    </section>
+</main>
+{% endblock %}
