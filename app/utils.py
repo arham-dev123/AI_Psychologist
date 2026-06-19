@@ -1,11 +1,48 @@
-import torch
 from app import db
-from app import tokenizer, model
 from collections import defaultdict
+from threading import Lock
 import re  # added for validation
 
 
+_tokenizer = None
+_model = None
+_model_lock = Lock()
+
+
+def _load_prediction_model():
+    global _tokenizer, _model
+
+    if _tokenizer is not None and _model is not None:
+        return _tokenizer, _model
+
+    with _model_lock:
+        if _tokenizer is not None and _model is not None:
+            return _tokenizer, _model
+
+        import os
+        from transformers import AutoModelForSequenceClassification, AutoTokenizer
+
+        if os.getenv("IS_LOCAL") and os.getenv("IS_LOCAL") == "yes":
+            tokenizer = AutoTokenizer.from_pretrained("./ads_tokenizer")
+            model = AutoModelForSequenceClassification.from_pretrained("./ads_model")
+        else:
+            model_name = "hamzapk2021/ads-model-ClinicalBert"
+            tokenizer = AutoTokenizer.from_pretrained(model_name)
+            model = AutoModelForSequenceClassification.from_pretrained(model_name)
+
+        model.eval()
+        _tokenizer = tokenizer
+        _model = model
+        print("Prediction model loaded")
+
+    return _tokenizer, _model
+
+
 def predict(conversation):
+    import torch
+
+    tokenizer, model = _load_prediction_model()
+
     inputs = tokenizer(
         conversation,
         return_tensors="pt",

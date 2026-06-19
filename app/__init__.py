@@ -4,8 +4,6 @@ from flask_mail import Mail
 from pymongo import MongoClient
 import certifi
 from config import Config
-import os
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -21,17 +19,6 @@ mongoclient = MongoClient(
 )
 db = mongoclient['adsproject']
 print("Connected to database")
-
-# Load ML model and tokenizer
-if os.getenv("IS_LOCAL") and os.getenv("IS_LOCAL") == "yes":
-    tokenizer = AutoTokenizer.from_pretrained("./ads_tokenizer") 
-    model = AutoModelForSequenceClassification.from_pretrained("./ads_model")
-else:
-    MODEL_NAME = "hamzapk2021/ads-model-ClinicalBert"
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-    model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME)
-
-model.eval()
 
 # Import and register Blueprints
 from app.views import auth_view, chat_view, form_view, report_view, main_view
