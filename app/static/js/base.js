@@ -17,8 +17,8 @@ function toggleModals2() {
 }
 
 function openNav() {
-  document.getElementById("navbarMobile").style.width = "250px";
-  document.getElementById("main").style.marginRight = "250px";
+  document.getElementById("navbarMobile").style.width = "min(300px, 86vw)";
+  document.getElementById("main").style.marginRight = "0";
 }
 
 function closeNav() {

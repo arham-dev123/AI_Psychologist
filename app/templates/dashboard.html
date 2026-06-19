@@ -9,7 +9,11 @@ integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwr
   <div class="dashboard-heading">
     <div>
       <p class="dashboard-eyebrow">Patient Dashboard</p>
-      <h1>Dashboard</h1>
+      <h1>Assessment Command Center</h1>
+    </div>
+    <div class="dashboard-heading-badge">
+      <span class="material-symbols-outlined">health_and_safety</span>
+      Clinical AI Workspace
     </div>
   </div>
 
@@ -18,13 +22,40 @@ integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwr
       <p class="dashboard-eyebrow">AI Psychologist</p>
       <h2>AI Psychologist for Anxiety disorders</h2>
       <p>Begin a guided assessment, answer the clinical screening questions, and generate a patient assessment report.</p>
-      <a href="{{ url_for('chat.chat') }}" class="start-assessment-btn">
-        <span class="material-symbols-outlined">psychology</span>
-        Start Assessment
-      </a>
+      <div class="hero-actions">
+        <a href="{{ url_for('chat.chat') }}" class="start-assessment-btn">
+          <span class="material-symbols-outlined">psychology</span>
+          Start Assessment
+        </a>
+        <div class="hero-trust-pill">
+          <span class="material-symbols-outlined">lock</span>
+          Secure patient workspace
+        </div>
+      </div>
+      <div class="hero-metrics" aria-label="Assessment highlights">
+        <div>
+          <strong>01</strong>
+          <span>Clinical intake</span>
+        </div>
+        <div>
+          <strong>02</strong>
+          <span>Screening form</span>
+        </div>
+        <div>
+          <strong>03</strong>
+          <span>Report output</span>
+        </div>
+      </div>
     </div>
     <div class="hero-image">
       <img src="{{ url_for('static', filename='img/unsplash_7bMdiIqz_J4.png') }}" class="img-fluid" alt="AI Psychologist assessment">
+      <div class="hero-image-card">
+        <span class="material-symbols-outlined">monitor_heart</span>
+        <div>
+          <strong>Screening Flow</strong>
+          <small>Conversation to report</small>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -57,6 +88,10 @@ integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwr
       <div>
         <p class="dashboard-eyebrow">Education</p>
         <h2>Blogs and Anxiety Resources</h2>
+      </div>
+      <div class="education-badge">
+        <span class="material-symbols-outlined">auto_stories</span>
+        Featured reads
       </div>
     </div>
 

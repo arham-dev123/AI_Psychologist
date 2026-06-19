@@ -14,6 +14,8 @@
 
 body.public-body {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background: var(--public-bg);
   color: var(--public-text);
   font-family: Arial, Helvetica, sans-serif;
@@ -607,6 +609,7 @@ body.public-body {
 }
 
 .public-footer {
+  margin-top: auto;
   background: #102a43;
   color: rgba(255, 255, 255, 0.82);
   padding: 22px 0;
@@ -699,5 +702,163 @@ body.public-body {
   .contact-form-card,
   .product-panel {
     padding: 22px;
+  }
+}
+
+/* Responsive hardening for public/mobile pages */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+.public-body .container,
+.public-body .row {
+  min-width: 0;
+}
+
+.public-body input,
+.public-body select,
+.public-body textarea,
+.public-body button,
+.public-body .btn {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .public-navbar .container {
+    min-height: 68px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .public-brand {
+    max-width: calc(100vw - 84px);
+  }
+
+  .public-brand img {
+    width: 168px;
+  }
+
+  #navbarMobile {
+    max-width: 86vw;
+    background: #ffffff;
+    box-shadow: 18px 0 42px rgba(16, 42, 67, 0.18);
+  }
+
+  #navbarMobile ul {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  #navbarMobile .dropdown-menu {
+    position: static !important;
+    min-width: 0;
+    width: 100%;
+    transform: none !important;
+    border-radius: 8px;
+    box-shadow: none;
+  }
+
+  #main {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .modal-dialog {
+    width: calc(100% - 24px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .modal-body .row > [class*="col-"],
+  .modal-body .row > [class*="col-sm-"] {
+    margin-bottom: 12px;
+  }
+
+  .modal-body .d-grid.col-6,
+  .modal-body .d-grid[class*="col-6"] {
+    width: 100%;
+  }
+
+  .public-hero {
+    min-height: auto;
+  }
+
+  .public-hero-copy {
+    padding: 68px 0 54px;
+  }
+
+  .public-hero h1 {
+    font-size: clamp(2rem, 12vw, 3rem);
+    line-height: 1.08;
+  }
+
+  .page-hero {
+    padding: 58px 0 44px;
+  }
+
+  .public-section {
+    padding: 48px 0;
+  }
+
+  .feature-card {
+    min-height: auto;
+    padding: 22px;
+  }
+
+  .contact-info-card,
+  .form-header {
+    flex-direction: column;
+  }
+
+  .public-field .form-control {
+    width: 100%;
+  }
+
+  .public-footer {
+    padding: 20px 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .public-brand img {
+    width: 148px;
+  }
+
+  .mobile-menu-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .product-panel,
+  .contact-form-card,
+  .feature-card {
+    padding: 18px;
+  }
+
+  .section-heading h2,
+  .page-hero.compact h1 {
+    font-size: 1.75rem;
+  }
+
+  .public-lead,
+  .page-hero p,
+  .section-heading p,
+  .product-panel p {
+    font-size: 0.98rem;
   }
 }

@@ -3,6 +3,16 @@ body{
     background:#eee;
 }
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 .box {
     position: relative;
     /* border-radius: 3px; */
@@ -541,3 +551,202 @@ table {
     padding: 10px 10px 10px 10px;
     margin: 10px 10px 10px 10px;
 }*/
+
+@media (max-width: 767.98px) {
+    body {
+        background: #f4f8fb;
+    }
+
+    #main {
+        width: 100%;
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 20px 12px 30px !important;
+        margin: 0 !important;
+    }
+
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .col-md-8.offset-md-3,
+    .col-sm-12 {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0 !important;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .box {
+        width: 100%;
+        border: 1px solid #dce8f1;
+        border-radius: 8px;
+        box-shadow: 0 14px 32px rgba(34, 79, 115, 0.1);
+        overflow: hidden;
+    }
+
+    .box-body.d-flex.justify-content-between {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .box-body .btn,
+    .text-start {
+        min-height: 44px;
+        align-items: center;
+        padding: 10px 12px;
+    }
+
+    .input-container {
+        width: 100%;
+        display: flex !important;
+    }
+
+    .input-container .material-symbols-outlined {
+        flex: 0 0 auto;
+        min-height: 44px;
+    }
+
+    .search-design {
+        width: 100%;
+        min-height: 44px;
+    }
+
+    table,
+    thead,
+    tbody,
+    tr,
+    td {
+        display: block;
+        width: 100%;
+    }
+
+    thead {
+        display: none;
+    }
+
+    table.box-body {
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    #reportTable tr {
+        margin: 12px;
+        border: 1px solid #dce8f1;
+        border-radius: 8px;
+        background: #ffffff;
+        box-shadow: 0 10px 24px rgba(34, 79, 115, 0.08);
+        overflow: hidden;
+    }
+
+    #reportTable td {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        min-height: 44px;
+        border-bottom: 1px solid #edf2f7 !important;
+        color: #344054;
+        text-align: right;
+        overflow-wrap: anywhere;
+        padding: 11px 12px;
+    }
+
+    #reportTable td::before {
+        flex: 0 0 42%;
+        color: #667085;
+        font-weight: 800;
+        text-align: left;
+    }
+
+    #reportTable td:nth-child(1)::before {
+        content: "First Name";
+    }
+
+    #reportTable td:nth-child(2)::before {
+        content: "Last Name";
+    }
+
+    #reportTable td:nth-child(3)::before {
+        content: "Age";
+    }
+
+    #reportTable td:nth-child(4)::before {
+        content: "Gender";
+    }
+
+    #reportTable td:nth-child(5)::before {
+        content: "Date";
+    }
+
+    #reportTable td:nth-child(6)::before {
+        content: "Severity";
+    }
+
+    #reportTable td:nth-child(7) {
+        align-items: center;
+        justify-content: flex-end;
+        border-bottom: 0 !important;
+    }
+
+    #reportTable td:nth-child(7)::before {
+        content: "Actions";
+        margin-right: auto;
+    }
+
+    #reportTable td:nth-child(7) .btn {
+        min-width: 44px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .box > .d-flex.justify-content-between {
+        align-items: center;
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .box > .d-flex.justify-content-between .btn {
+        min-height: 42px;
+    }
+}
+
+@media (max-width: 420px) {
+    .container {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    #reportTable tr {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    #reportTable td {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+        text-align: left;
+    }
+
+    #reportTable td::before {
+        flex-basis: auto;
+    }
+
+    #reportTable td:nth-child(7) {
+        flex-direction: row;
+        align-items: center;
+    }
+}

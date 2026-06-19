@@ -192,3 +192,111 @@ body {
         text-align: center;
     }
 }
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.assessment-page,
+.assessment-shell,
+.assessment-panel,
+.question,
+.options,
+.options label {
+    min-width: 0;
+}
+
+@media (max-width: 767.98px) {
+    .assessment-page {
+        width: 100%;
+        padding: 20px 12px 30px !important;
+    }
+
+    .assessment-shell {
+        width: 100%;
+    }
+
+    .assessment-panel.box {
+        min-height: auto;
+        border-radius: 8px;
+    }
+
+    .assessment-header.box-header.with-border {
+        align-items: flex-start;
+        padding: 18px;
+    }
+
+    .assessment-title {
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .assessment-title .material-symbols-outlined {
+        width: 42px;
+        height: 42px;
+        font-size: 24px;
+    }
+
+    .assessment-title .box-title {
+        font-size: 1.12rem;
+        line-height: 1.25;
+    }
+
+    .assessment-status {
+        border-radius: 8px;
+    }
+
+    .assessment-body.box-body {
+        padding: 18px 14px;
+    }
+
+    .question p {
+        margin-bottom: 16px;
+        padding: 15px;
+        font-size: 1rem;
+        overflow-wrap: anywhere;
+    }
+
+    .options label {
+        align-items: flex-start;
+        min-height: 54px;
+        padding: 13px 14px;
+        line-height: 1.4;
+        overflow-wrap: anywhere;
+    }
+
+    .options input[type="radio"] {
+        margin-top: 2px;
+    }
+
+    .assessment-footer.box-footer {
+        padding: 14px;
+    }
+
+    .assessment-button {
+        min-height: 48px;
+    }
+}
+
+@media (max-width: 420px) {
+    .assessment-page {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    .assessment-header.box-header.with-border {
+        padding: 16px;
+    }
+
+    .assessment-body.box-body,
+    .assessment-footer.box-footer {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}

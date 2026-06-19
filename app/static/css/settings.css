@@ -2,6 +2,16 @@ body{
     margin-top:5px;
     background:#eee;
 }
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 .box {
     position: fixed;
     border-radius: 3px;
@@ -483,4 +493,85 @@ form {
     /* align-items: center; */
     padding: 10px 10px 10px 10px;
     margin: 10px 10px 10px 10px;
+}
+
+@media (max-width: 991.98px) {
+    body {
+        background: #f4f8fb;
+    }
+
+    #main {
+        width: 100%;
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 20px 12px 30px !important;
+        margin: 0 !important;
+    }
+
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .col-md-8.offset-md-3,
+    .col-sm-12 {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0 !important;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .box {
+        position: static !important;
+        width: 100% !important;
+        border: 1px solid #dce8f1;
+        border-radius: 8px;
+        box-shadow: 0 18px 44px rgba(34, 79, 115, 0.12);
+        overflow: hidden;
+    }
+
+    form {
+        width: 100%;
+        margin: 0;
+        padding: 16px;
+    }
+
+    .box-body {
+        border-width: 1px;
+        border-color: #dce8f1;
+        margin-bottom: 12px;
+        padding: 10px;
+        font-size: 1rem;
+    }
+
+    .box-body .form-control {
+        min-height: 50px;
+        font-size: 1rem !important;
+        overflow-wrap: anywhere;
+    }
+
+    .box-footer {
+        padding-top: 4px;
+    }
+
+    .box-footer .btn {
+        width: 100%;
+        min-height: 48px;
+    }
+}
+
+@media (max-width: 420px) {
+    .container {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    form {
+        padding: 12px;
+    }
 }

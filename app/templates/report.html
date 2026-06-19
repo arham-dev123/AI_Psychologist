@@ -25,7 +25,11 @@
                     <div class="report-heading">
                         <p class="eyebrow">AI Psychologist</p>
                         <h1>Patient Assessment Report</h1>
-                        <p class="report-subtitle">Generated summary based on the completed self-report assessment form.</p>
+                        <p class="report-subtitle">AI-supported clinical screening summary based on the completed self-report assessment form.</p>
+                        <div class="report-meta-row">
+                            <span>Confidential assessment support</span>
+                            <span>Not a medical diagnosis</span>
+                        </div>
                     </div>
                     <div class="report-badge">
                         <span>Issue Date</span>
@@ -35,18 +39,22 @@
 
                 <section class="summary-panel">
                     <div>
+                        <span class="material-symbols-outlined">person</span>
                         <span>Patient Name</span>
                         <strong>{{ first_name }} {{ last_name }}</strong>
                     </div>
                     <div>
+                        <span class="material-symbols-outlined">psychology</span>
                         <span>Prediction</span>
                         <strong>{{ form_type }}</strong>
                     </div>
                     <div>
+                        <span class="material-symbols-outlined">monitor_heart</span>
                         <span>Assessment Result</span>
                         <strong>{{ severity_category }}</strong>
                     </div>
                     <div>
+                        <span class="material-symbols-outlined">speed</span>
                         <span>Score</span>
                         <strong>{{ total_score }}</strong>
                     </div>
@@ -125,6 +133,32 @@
                         </div>
                     </div>
                     <p class="assessment-note">{{ report_message }}</p>
+                </section>
+
+                <section class="report-section recommendations-section">
+                    <div class="section-heading">
+                        <span class="material-symbols-outlined">clinical_notes</span>
+                        <h2>Recommendations</h2>
+                    </div>
+                    <div class="recommendation-intro">
+                        <div>
+                            <span>Personalized Guidance</span>
+                            <strong>{{ recommendations.title }}</strong>
+                        </div>
+                        <p>{{ recommendations.summary }}</p>
+                    </div>
+                    <div class="recommendations-grid">
+                        {% for section in recommendations['sections'] %}
+                        <article class="recommendation-card">
+                            <h3>{{ section['heading'] }}</h3>
+                            <ul>
+                                {% for item in section['items'] %}
+                                <li>{{ item }}</li>
+                                {% endfor %}
+                            </ul>
+                        </article>
+                        {% endfor %}
+                    </div>
                 </section>
 
                 <footer class="report-footer">

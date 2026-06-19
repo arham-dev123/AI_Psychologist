@@ -72,7 +72,7 @@
             <footer class="box-footer chat-footer">
                 <form method="POST" action="{{ url_for('chat.chat') }}">
                     <div class="input-group chat-input-group">
-                        <input type="text" name="message" id="messageInput" placeholder="Type your response in a few sentences..." class="form-control">
+                        <textarea name="message" id="messageInput" placeholder="Type your response in a few sentences..." class="form-control" rows="1"></textarea>
                         <button type="submit" class="btn chat-icon-button" id="sendButton" aria-label="Send message">
                             <span class="material-symbols-outlined">send</span>
                         </button>

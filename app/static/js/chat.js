@@ -14,8 +14,30 @@ document.addEventListener('DOMContentLoaded', function () {
       messageInput.focus();
   }
 
+  function resizeMessageInput() {
+      var messageInput = document.getElementById('messageInput');
+      if (!messageInput) {
+          return;
+      }
+
+      messageInput.style.height = 'auto';
+      messageInput.style.height = Math.min(messageInput.scrollHeight, 150) + 'px';
+  }
+
   // Focus on the input field when the page loads
   focusInputField();
+  resizeMessageInput();
+
+  var messageInput = document.getElementById('messageInput');
+  if (messageInput) {
+      messageInput.addEventListener('input', resizeMessageInput);
+      messageInput.addEventListener('keydown', function (event) {
+          if (event.key === 'Enter' && !event.shiftKey) {
+              event.preventDefault();
+              sendMessage();
+          }
+      });
+  }
 
 })
 
@@ -58,6 +80,7 @@ function speechToTextConversion() {
       var last = event.results.length - 1;
       var convertedText = event.results[last][0].transcript;
       diagnostic.value = convertedText;
+      diagnostic.dispatchEvent(new Event('input'));
       console.log('Confidence: ' + event.results[0][0].confidence);
   };
 
