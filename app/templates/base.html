@@ -98,58 +98,36 @@
       </div>
 
       <!-- Navigation Bar Mobile-->
-      <div id="navbarMobile" class="sidebar collapse navbar-collapse">
-        <ul>
-          <li class="nav-item">
-            <div class="d-flex justify-content-between mb-4">
-              <div>
-                <a class="navbar-brand public-brand mobile-brand p-0 me-2" href="{{ url_for('main.home') }}" aria-label="AI Psychologist">
-                  <img src="{{ url_for('static', filename='img/ai_psychologist_logo.svg') }}" alt="AI Psychologist logo">
-                </a>
-              </div>
-              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a href="{{ url_for('main.home') }}" class="nav-link linkColor{% if request.path == url_for('main.home') %}selected2{% endif %}" aria-current="page" href="{{ url_for('main.home') }}">Home</a> 
-          </li>
-          <li class="nav-item">
-            <a href="{{ url_for('main.services') }}" class="nav-link linkColor{% if request.path == url_for('main.services') %}selected2{% endif %}" aria-current="page" href="{{ url_for('main.services') }}">Services</a>
-          </li>
-          <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMobile" role="button" data-bs-toggle="dropdown"
-                                  aria-expanded="false">
-                        Products
-                      </a>
-                      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMobile">
-                        <li><a class="dropdown-item linkColor" href="{{ url_for('main.home') }}#products">Product overview</a></li>
-                        <li><a class="dropdown-item linkColor{% if request.path == url_for('chat.chat') %}selected2{% endif %}" href="{{ url_for('chat.chat') }}">AI Psychologist</a></li>
-                      </ul>
-          </li>
-          <li class="nav-item">
-            <a href="{{ url_for('main.contact_us') }}" class="nav-link linkColor{% if request.path == url_for('main.contact_us') %}selected2{% endif %}" aria-current="page" href="{{ url_for('main.contact_us') }}">Contact Us</a>
-          </li>
-          <div class="mt-4">
-            {% if "email" not in session %}
-            <li>
-              <button type="button" class="btn public-btn public-btn-outline mx-2 mb-3" data-bs-toggle="modal"
-                data-bs-target="#loginModal">Log in</button>
-            </li>
-            <li>
-              <button type="button" class="btn public-btn public-btn-primary mx-1 mb-3" data-bs-toggle="modal" data-bs-target="#signupModal">Sign
-              up</button>
-            </li>
-            {% else %}
-            <li>
-              <a href="{{ url_for('main.dashboard') }}" class="btn public-btn public-btn-primary mb-3" role="button">Dashboard</a>
-            </li>
-            {% endif %}
-          </div>
-        </ul>
+      <div id="navbarMobile" class="mobile-drawer" aria-hidden="true">
+        <div class="mobile-drawer-header">
+          <a class="navbar-brand public-brand mobile-brand p-0" href="{{ url_for('main.home') }}" aria-label="AI Psychologist" onclick="closeNav()">
+            <img src="{{ url_for('static', filename='img/ai_psychologist_logo.svg') }}" alt="AI Psychologist logo">
+          </a>
+          <button type="button" class="mobile-drawer-close" aria-label="Close menu" onclick="closeNav()">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+        <nav class="mobile-drawer-nav" aria-label="Mobile navigation">
+          <a href="{{ url_for('main.home') }}" class="mobile-drawer-link{% if request.path == url_for('main.home') %} selected2{% endif %}" onclick="closeNav()">Home</a>
+          <a href="{{ url_for('main.services') }}" class="mobile-drawer-link{% if request.path == url_for('main.services') %} selected2{% endif %}" onclick="closeNav()">Services</a>
+          <a href="{{ url_for('main.home') }}#products" class="mobile-drawer-link" onclick="closeNav()">Products</a>
+          <a href="{{ url_for('main.contact_us') }}" class="mobile-drawer-link{% if request.path == url_for('main.contact_us') %} selected2{% endif %}" onclick="closeNav()">Contact Us</a>
+        </nav>
+        <div class="mobile-drawer-actions">
+          {% if "email" not in session %}
+          <button type="button" class="btn public-btn public-btn-outline" data-bs-toggle="modal"
+            data-bs-target="#loginModal" onclick="closeNav()">Log in</button>
+          <button type="button" class="btn public-btn public-btn-primary" data-bs-toggle="modal"
+            data-bs-target="#signupModal" onclick="closeNav()">Sign up</button>
+          {% else %}
+          <a href="{{ url_for('main.dashboard') }}" class="btn public-btn public-btn-primary" role="button" onclick="closeNav()">Dashboard</a>
+          {% endif %}
+        </div>
       </div>
+      <button type="button" class="mobile-nav-overlay" aria-label="Close menu" onclick="closeNav()"></button>
 
       <div id="main" class="position-fixed">
-        <a class="d-md-none mobile-menu-btn" role="button" onclick="openNav()">
+        <a class="d-md-none mobile-menu-btn" role="button" onclick="openNav()" aria-label="Open menu" aria-controls="navbarMobile" aria-expanded="false">
           <span class="material-symbols-outlined">
             menu
           </span>

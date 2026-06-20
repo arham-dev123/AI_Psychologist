@@ -740,28 +740,82 @@ canvas {
 
 @media (max-width: 768px) {
   .public-navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
     min-height: 68px;
     padding-left: 14px;
     padding-right: 14px;
   }
 
   .public-brand {
-    max-width: calc(100vw - 84px);
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: calc(100vw - 86px);
   }
 
   .public-brand img {
-    width: 168px;
+    width: min(168px, calc(100vw - 96px));
   }
 
   #navbarMobile {
     max-width: 86vw;
     background: #ffffff;
     box-shadow: 18px 0 42px rgba(16, 42, 67, 0.18);
+    padding-top: 14px;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   #navbarMobile ul {
+    width: 100%;
+    margin: 0;
     padding-left: 16px;
     padding-right: 16px;
+  }
+
+  #navbarMobile .d-flex.justify-content-between {
+    align-items: center;
+    gap: 12px;
+  }
+
+  #navbarMobile .mobile-brand {
+    flex: 1 1 auto;
+    max-width: calc(100% - 58px);
+  }
+
+  #navbarMobile .mobile-brand img {
+    width: min(172px, 100%);
+  }
+
+  #navbarMobile .closebtn {
+    position: static;
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 42px;
+    margin: 0;
+    border-radius: 8px;
+    color: var(--public-text);
+    background: #f4f8fb;
+    line-height: 1;
+  }
+
+  #navbarMobile .nav-item {
+    width: 100%;
+  }
+
+  #navbarMobile .nav-link,
+  #navbarMobile .dropdown-item {
+    width: 100%;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   #navbarMobile .dropdown-menu {
@@ -774,6 +828,23 @@ canvas {
   }
 
   #main {
+    position: static !important;
+    flex: 0 0 auto;
+    width: auto;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0;
+  }
+
+  #navbarMobile .mt-4 {
+    width: 100%;
+    margin-top: 18px !important;
+  }
+
+  #navbarMobile .public-btn {
+    width: 100%;
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
@@ -836,12 +907,25 @@ canvas {
 
 @media (max-width: 420px) {
   .public-brand img {
-    width: 148px;
+    width: min(148px, calc(100vw - 88px));
   }
 
   .mobile-menu-btn {
     width: 40px;
     height: 40px;
+  }
+
+  #navbarMobile {
+    max-width: 88vw;
+  }
+
+  #navbarMobile ul {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  #navbarMobile .mobile-brand img {
+    width: min(150px, 100%);
   }
 
   .product-panel,
@@ -860,5 +944,170 @@ canvas {
   .section-heading p,
   .product-panel p {
     font-size: 0.98rem;
+  }
+}
+
+/* Modern off-canvas mobile navigation */
+.mobile-drawer,
+.mobile-nav-overlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .public-navbar {
+    z-index: 1070;
+  }
+
+  .public-navbar .container {
+    position: relative;
+  }
+
+  #navbarMobile.mobile-drawer {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 1090;
+    width: min(330px, 88vw);
+    max-width: 88vw;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    border-right: 1px solid rgba(220, 232, 241, 0.95);
+    background:
+      linear-gradient(180deg, #ffffff 0%, #f7fcfb 54%, #eef6ff 100%);
+    box-shadow: 22px 0 60px rgba(16, 42, 67, 0.24);
+    overflow-y: auto;
+    padding: 18px;
+    transform: translateX(-105%);
+    transition: transform 0.28s ease;
+  }
+
+  #navbarMobile.mobile-drawer.is-open {
+    transform: translateX(0);
+  }
+
+  .mobile-nav-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1080;
+    display: block;
+    border: 0;
+    background: rgba(16, 42, 67, 0.42);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .mobile-nav-overlay.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  body.mobile-nav-open {
+    overflow: hidden;
+  }
+
+  .mobile-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #dce8f1;
+  }
+
+  #navbarMobile .mobile-brand {
+    max-width: calc(100% - 58px);
+  }
+
+  #navbarMobile .mobile-brand img {
+    width: min(182px, 100%);
+    height: auto;
+  }
+
+  .mobile-drawer-close,
+  .mobile-menu-btn {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dce8f1;
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--public-text);
+    box-shadow: 0 8px 18px rgba(34, 79, 115, 0.08);
+    text-decoration: none;
+  }
+
+  .mobile-menu-btn {
+    background: #eaf7f4;
+    color: var(--public-primary);
+  }
+
+  .mobile-drawer-close {
+    flex: 0 0 auto;
+    padding: 0;
+  }
+
+  .mobile-drawer-nav {
+    display: grid;
+    gap: 10px;
+  }
+
+  .mobile-drawer-link {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(220, 232, 241, 0.92);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.82);
+    color: var(--public-text);
+    font-size: 1rem;
+    font-weight: 850;
+    line-height: 1.3;
+    padding: 13px 15px;
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(34, 79, 115, 0.07);
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .mobile-drawer-link:hover,
+  .mobile-drawer-link:focus {
+    border-color: rgba(15, 118, 110, 0.24);
+    background: #eaf7f4;
+    color: var(--public-primary);
+    transform: translateX(2px);
+  }
+
+  .mobile-drawer-actions {
+    display: grid;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid #dce8f1;
+  }
+
+  .mobile-drawer-actions .public-btn {
+    width: 100%;
+    min-height: 50px;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 420px) {
+  #navbarMobile.mobile-drawer {
+    width: min(306px, 90vw);
+    max-width: 90vw;
+    padding: 16px 14px;
+  }
+
+  #navbarMobile .mobile-brand img {
+    width: min(156px, 100%);
+  }
+
+  .mobile-drawer-link,
+  .mobile-drawer-actions .public-btn {
+    min-height: 48px;
   }
 }
